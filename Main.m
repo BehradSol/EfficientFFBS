@@ -1,3 +1,6 @@
+%% This file is distributed under BSD (simplified) license
+%% author: Bbehrad Soleimani <behrad@umd.edu>
+
 clc
 clear 
 close all
