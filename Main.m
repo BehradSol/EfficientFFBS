@@ -1,5 +1,5 @@
 %% This file is distributed under BSD (simplified) license
-%% author: Bbehrad Soleimani <behrad@umd.edu>
+%% Author: Behrad Soleimani <behrad@umd.edu>
 
 clc
 clear 
@@ -21,10 +21,10 @@ A{1}(3,1) = -0.2;
 A{1}(1,3) = 0.4;
 
 A{1}(1,1) =  -0.75;
-% A{2}(3,3) = -0.5;
 
 B = zeros(Nx, Ne);
 B(1,1) = 1;
+B(3,1) = 1;
 e = rand(Ne , T);
 
 qd = (1e-5)*ones(1,Nx);
@@ -50,10 +50,10 @@ y = C*x(:,p+1 : T+p) + mvnrnd(zeros(1,Ny),R,T)';
 
 
 
-[m,  Cov]   = EFBS(y, e, A, Q, B, C, R);
-[m2, Cov2] = Filtering(y, e, A, Q, B, C, R);
+[m,  Cov]   = EFBS(y, A, Q, C, R, e, B);
+[m2, Cov2] = Filtering(y, A, Q, C, R, e, B);
 
-plot(1:T , x(1,p+1:T+p) , 'black' , 'LineWidth' , 1.5)
+plot(1:T , x(1,p+1:T+p) , 'oblack' , 'LineWidth' , 1.5)
 hold on
 plot(1:T , m2(1,:) , 'blue' , 'LineWidth' , 2.5)
 plot(1:T , m(1,:) , 'red', 'LineWidth' , 1.5)
@@ -68,7 +68,7 @@ xlim([1 T])
 
 figure
 
-plot(1:T , x(1,p+1:T+p) , 'black' , 'LineWidth' , 1.5)
+plot(1:T , x(1,p+1:T+p) , 'oblack' , 'LineWidth' , 1.5)
 hold on
 plot(1:T , m(1,:) , 'red' , 'LineWidth' , 1.5)
 plot(1:T , m(1,:) + 3*Cov(1,1) , '--blue', 'LineWidth' , 1)

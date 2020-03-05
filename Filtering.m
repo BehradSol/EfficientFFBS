@@ -1,13 +1,30 @@
-function [m, Cov, P] = Filtering(y, e, Ao, Qo, B, C, R, m0, V0)
+%% This file is distributed under BSD (simplified) license
+%% Author: Behrad Soleimani <behrad@umd.edu>
 
-    % Follow the description:
-    % y = observation matrix with dimension N_y * T
-    % A = VAR coefficients; A is a 1 * p cell corresponding to each lag 
+function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
+    % The function implements the conventional Forward Filtering and 
+    % Backward Smooting.
+    
+    % Inputs:
+    % y  = observation matrix with dimension N_y * T
+    % Ao = VAR coefficients; A is a p * 1 cell corresponding to each lag 
     %     such that each cell is an N_x * N_x matrix
-    % Q = source noise covariance matrix with dimension N_x * N_x
-    % C = linear mapping matrix between observations and sources with
+    % Qo = source noise covariance matrix with dimension N_x * N_x
+    % C  = linear mapping matrix between observations and sources with
     %     dimension N_y * N_x
-    % R = observation noise matrix with dimension N_y * N_y
+    % R  = observation noise matrix with dimension N_y * N_y
+    % e  = stimuli matrix with dimension N_e * T
+    % B  = stimuli coefficients matrix with dimension N_x * N_e
+    % m0 = initial of mean vector
+    % V0 = initial covariance matrix
+    
+
+    % Outputs:
+    % m   = estimated mean matrix with dimension N_x * T
+    % Cov = estimated steady-state covariance matrix with dimension N_x *
+    %       N_x
+    % P   = cross-covariance terms; P is a T * T cell corresponding to each 
+    %       time-pari such that each cell is an N_x * N_x matrix  
     
     
     % ---------------------------------------------------------------------
@@ -19,6 +36,21 @@ function [m, Cov, P] = Filtering(y, e, Ao, Qo, B, C, R, m0, V0)
     NNx = p*Nx;
     L = size(y);
     T = L(1,2);
+    
+    if nargin < 6
+        m0 = zeros(NNx,1);
+        V0 = zeros(NNx,NNx);
+        Ne = 1;
+        B = zeros(Nx , Ne);
+        e = zeros(Ne , T);
+    end
+    
+    if nargin < 8
+        m0 = zeros(NNx,1);
+        V0 = zeros(NNx,NNx);
+    end
+    
+    
     L = size(B);
     Ne = L(1,2);
     
@@ -39,13 +71,7 @@ function [m, Cov, P] = Filtering(y, e, Ao, Qo, B, C, R, m0, V0)
     for i = 1 : p-1
         Q = blkdiag(Q, smallvalue*eye(Nx));
     end
-    
-    if nargin < 9
-        m0 = zeros(NNx,1);
-        V0 = zeros(NNx,1);
-    end
-    
-    
+       
     % ---------------------------------------------------------------------
     % Coventional Filtering 
    
