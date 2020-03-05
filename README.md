@@ -24,4 +24,6 @@ Contens:
 
 > EfficientFFBS: Derivation and details of the algorithm.
 
-Instructions: Simple and easy. Download all the 3 codes in a directory and run main.m, that will generate one example, its three spectrogram estimates as well as the true estimate. It also compares estimates of a single window, while constructing the confidence intervals. To use the functions individually please look at the function descriptions.
+Instructions: Simple and easy. Download all the codes in a directory and run main.m, that will generate one example described below. To use the functions individually, please look at the function descriptions.
+
+Example:
