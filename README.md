@@ -27,3 +27,16 @@ Contens:
 Instructions: Simple and easy. Download all the codes in a directory and run main.m, that will generate one example described below. To use the functions individually, please look at the function descriptions.
 
 Example:
+
+
+
+
+| ![](Figs/Comparison.png) | 
+|:--:| 
+| Fig 1. Comparison of the conventional filtering and EfficientFFBS |
+
+
+
+| ![](Figs/Quantile.png) | 
+|:--:| 
+| Fig 2. The estimation of EfficientFFBS with 95% quantile |
