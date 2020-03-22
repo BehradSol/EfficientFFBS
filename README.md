@@ -33,10 +33,10 @@ Example:
 
 | ![](Figs/Comparison.png) | 
 |:--:| 
-| Comparison of the conventional filtering and EfficientFFBS |
+| Fig 1. Comparison of the conventional filtering and EfficientFFBS |
 
 
 
 | ![](Figs/Quantile.png) | 
 |:--:| 
-| The estimation of EfficientFFBS with 95% quantile |
+| Fig 2. The estimation of EfficientFFBS with 95% quantile |
