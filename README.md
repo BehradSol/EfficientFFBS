@@ -31,6 +31,12 @@ Example:
 
 
 
-| ![Test Image 1](Figs/Comparison.png) | 
+| ![](Figs/Comparison.png) | 
 |:--:| 
-| *Space* |
+| Comparison of the conventional filtering and EfficientFFBS |
+
+
+
+| ![](Figs/Quantile.png) | 
+|:--:| 
+| The estimation of EfficientFFBS with 95% quantile |
