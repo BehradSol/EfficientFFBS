@@ -116,8 +116,8 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
         SB(:,:,i) = SF(:,:,i) + S(:,:,i)*(SB(:,:,i+1)- ( A*SF(:,:,i)*A' + Q) )*S(:,:,i)';
     end
 
-    m = mB(1:Nx,:); %Mean vectors with dimension Nx * T
-    Cov = SB(1:Nx , 1:Nx , :);  %Covariance matrices with dimension Nx * Nx * T
+    m = mB((p-1)*Nx + 1 : p*Nx,:); %Mean vectors with dimension Nx * T
+    Cov = SB((p-1)*Nx + 1 : p*Nx , (p-1)*Nx + 1 : p*Nx , :);  %Covariance matrices with dimension Nx * Nx * T
     
     % ---------------------------------------------------------------------
     % Generating cross-covariance terms

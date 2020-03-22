@@ -51,7 +51,7 @@ y = C*x(:,p+1 : T+p) + mvnrnd(zeros(1,Ny),R,T)';
 
 
 [m,  Cov]   = EFBS(y, A, Q, C, R, e, B);
-[m2, Cov2] = Filtering(y, A, Q, C, R, e, B);
+[m2, Cov2]  = Filtering(y, A, Q, C, R, e, B);
 
 plot(1:T , x(1,p+1:T+p) , 'oblack' , 'LineWidth' , 1.5)
 hold on
@@ -60,6 +60,7 @@ plot(1:T , m(1,:) , 'red', 'LineWidth' , 1.5)
 
 ylabel('Signal amplitude')
 xlabel('Time index')
+axis('square')
 
 legend('Gound truth','Estimation via conventional filtering','Estimation via EFBS')
 grid on
@@ -71,9 +72,9 @@ figure
 plot(1:T , x(1,p+1:T+p) , 'oblack' , 'LineWidth' , 1.5)
 hold on
 plot(1:T , m(1,:) , 'red' , 'LineWidth' , 1.5)
-plot(1:T , m(1,:) + 3*Cov(1,1) , '--blue', 'LineWidth' , 1)
-plot(1:T , m(1,:) - 3*Cov(1,1) , '--blue', 'LineWidth' , 1)
-
+plot(1:T , m(1,:) + 3*reshape(Cov(1,1,:),1,50) , '--blue', 'LineWidth' , 1)
+plot(1:T , m(1,:) - 3*reshape(Cov(1,1,:),1,50) , '--blue', 'LineWidth' , 1)
+axis('square')
 
 ylabel('Signal amplitude')
 xlabel('Time index')

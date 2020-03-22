@@ -81,13 +81,7 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     K = SigP(:,1:Nx)*C'/( C*SigP(1:Nx,1:Nx)*C'+ R);   %Kalman gain
     S = Sig*A'/SigP;    %Smoothing gain
     
-
-    [Sigma,~,~,info] = idare(eye(NNx) , zeros(NNx,NNx) , S*SigP*S'  , [], [] , S');
-    if (info.Report ~= 0)
-         Sigma = Sig;             
-    end
-    
-    
+ 
     mF = zeros(NNx,T);
 
     mLast = m0;
@@ -109,13 +103,16 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     mB = zeros(NNx,T);
     mB(:,end) = mF(:,end);
     
+    Cov = zeros(p*Nx , p*Nx , T);
+    Cov(: , : , T) = Sig;
     for i = T-1 : -1 : 1         
         mB(:,i) = mF(:,i) + S*(mB(:,i+1) - A*mF(:,i) - B * e(:,i));
+        
+        Cov(: , : , i) = Sig + S*(Cov(: , : , i+1) - SigP)*S';
     end
  
        
-    m = mB(1:Nx,:); %Mean vectors with dimension Nx * T
-    Cov = Sigma(1:Nx , 1:Nx); %Steady-state covariance matrix with dimension Nx * Nx
+    m = mB( (p-1)*Nx + 1 : p*Nx,:); %Mean vectors with dimension Nx * T
     
     
     % ---------------------------------------------------------------------
@@ -129,7 +126,7 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
 %     P  = cell(T,T);
 % 
 %     for i = 1 : T
-%         Po{i,i} = Cov;
+%         Po{i,i} = Cov(:,:,i);
 %     end
 %     
 %     for i = T : -1 : 1
