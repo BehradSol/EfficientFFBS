@@ -27,3 +27,5 @@ Contens:
 Instructions: Simple and easy. Download all the codes in a directory and run main.m, that will generate one example described below. To use the functions individually, please look at the function descriptions.
 
 Example:
+
+![Test Image 1](Figs/Comparison.png)
