@@ -29,3 +29,4 @@ Instructions: Simple and easy. Download all the codes in a directory and run mai
 Example:
 
 ![Test Image 1](Figs/Comparison.png)
+*image_caption*
