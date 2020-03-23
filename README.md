@@ -37,7 +37,7 @@ In Fig.1, the estimated verions of the signal, i.e. non-causal belifes p(x<sub>t
 |:--:| 
 | Fig 1. Comparison of the conventional filtering and EfficientFFBS |
 
-In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted.
+In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted to demonstrate the it can be an acceptable estimation of the true value with high confidence interval.
 
 | ![](Figs/Quantile.png) | 
 |:--:| 
