@@ -28,7 +28,7 @@ Instructions: Simple and easy. Download all the codes in a directory and run mai
 
 Example:
 
-In this example, we assume that there are N<sub>y;=3 observations, N<sub>x;=5 sources, and T=50 time samples. The underlying source dynamic is considered as an vector auto-regressive process with 1 lap, i.e. VAR(1) as
+In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as an vector auto-regressive process with 1 lap, i.e. VAR(1) as
 
 
 | ![](Figs/Comparison.png) | 
