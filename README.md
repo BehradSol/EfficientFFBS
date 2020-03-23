@@ -28,14 +28,16 @@ Instructions: Simple and easy. Download all the codes in a directory and run mai
 
 Example:
 
-In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as an vector auto-regressive process with 1 lap, i.e. VAR(1) as
+In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as an vector auto-regressive process with 1 lag, i.e. VAR(1). The noise covariance matrix is also assumed to be diagonal.
+
+In Fig.1, the estimated verions of the signal, i.e. non-causal belifes p(x<sub>t</sub> | y<sub>1:T</sub>), and ground truth are compared. As it can be seen, the conventional filtering (Kalman filtering) scheme is almost the same as the EfficientFFBS. 
 
 
 | ![](Figs/Comparison.png) | 
 |:--:| 
 | Fig 1. Comparison of the conventional filtering and EfficientFFBS |
 
-
+In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted.
 
 | ![](Figs/Quantile.png) | 
 |:--:| 
