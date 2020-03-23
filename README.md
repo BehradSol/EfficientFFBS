@@ -29,7 +29,7 @@ Instructions: Simple and easy. Download all the codes in a directory and run mai
 Example:
 
 In this example, we assume that there are $ N_y=3 $
-
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
 
 | ![](Figs/Comparison.png) | 
 |:--:| 
