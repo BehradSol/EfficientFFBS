@@ -22,20 +22,22 @@ Contens:
 
 > Filtering.m:  Conventional forward filtering and backward smoothing function.
 
-> EfficientFFBS: Derivation and details of the algorithm.
+> EfficientFFBS.pdf: Derivation and details of the algorithm.
 
 Instructions: Simple and easy. Download all the codes in a directory and run main.m, that will generate one example described below. To use the functions individually, please look at the function descriptions.
 
 Example:
 
+In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as an vector auto-regressive process with 1 lag, i.e. VAR(1). The noise covariance matrix is also assumed to be diagonal.
 
+In Fig.1, the estimated verions of the source #1, i.e. non-causal belifes p(x<sub>t</sub> | y<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
 
 
 | ![](Figs/Comparison.png) | 
 |:--:| 
 | Fig 1. Comparison of the conventional filtering and EfficientFFBS |
 
-
+In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted to demonstrate the it can be an acceptable estimation of the true value with high confidence interval.
 
 | ![](Figs/Quantile.png) | 
 |:--:| 
