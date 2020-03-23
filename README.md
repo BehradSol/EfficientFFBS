@@ -22,13 +22,13 @@ Contens:
 
 > Filtering.m:  Conventional forward filtering and backward smoothing function.
 
-> EfficientFFBS: Derivation and details of the algorithm.
+> EfficientFFBS.pdf: Derivation and details of the algorithm.
 
 Instructions: Simple and easy. Download all the codes in a directory and run main.m, that will generate one example described below. To use the functions individually, please look at the function descriptions.
 
 Example:
 
-In this example, we assume that there are $$N_y=3$$
+In this example, we assume that there are $ N_y=3 $
 
 
 | ![](Figs/Comparison.png) | 
