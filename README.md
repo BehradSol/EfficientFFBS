@@ -7,9 +7,9 @@ Copyright (c) 2020 Behrad Soleimani All Rights Reserved
 
 Contact: behrad@umd.edu
 
-Citation: If you find these piece of codes helpful in your reserach, please cite the following technical report
+%Citation: If you find these piece of codes helpful in your reserach, please cite the following technical report
 
--****
+%-****
 
 Date: March 5, 2020
 
