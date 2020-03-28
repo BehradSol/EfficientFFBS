@@ -7,9 +7,9 @@ Copyright (c) 2020 Behrad Soleimani All Rights Reserved
 
 Contact: behrad@umd.edu
 
-%Citation: If you find these piece of codes helpful in your reserach, please cite the following technical report
+Citation: If you find these piece of codes helpful in your reserach, please cite the following technical report
 
-%-****
+-Soleimani, B., P. Das, P., J. Kulasingham, J. Z. Simon and B. Babadi (2020) Granger Causal Inference from Indirect Low-Dimensional Measurements with Application to MEG Functional Connectivity Analysis, 2020 54th Annual Conference on Information Sciences and Systems.
 
 Date: March 5, 2020
 
