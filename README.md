@@ -15,7 +15,7 @@ Date: March 5, 2020
 
 Requirements: implemented in Matlab R2019a version, but should run on most versions.
 
-Contens: 
+Contents: 
 > main.m:       Master script. 
 
 > EFBS.m:       Efficient forward filtering and backward smoothing function.
