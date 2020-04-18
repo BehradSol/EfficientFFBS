@@ -1,8 +1,8 @@
 %% This file is distributed under BSD (simplified) license
 %% Author: Behrad Soleimani <behrad@umd.edu>
 
-function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
-    % The function implements the conventional Forward Filtering and 
+function [m, Cov, P] = Filtering(y, Ao, Qo, Co, R, e, Bo, m0, V0)
+    % This function implements the conventional Forward Filtering and 
     % Backward Smooting.
     
     % Inputs:
@@ -10,11 +10,11 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
     % Ao = VAR coefficients; A is a p * 1 cell corresponding to each lag 
     %     such that each cell is an N_x * N_x matrix
     % Qo = source noise covariance matrix with dimension N_x * N_x
-    % C  = linear mapping matrix between observations and sources with
+    % Co = linear mapping matrix between observations and sources with
     %     dimension N_y * N_x
     % R  = observation noise matrix with dimension N_y * N_y
     % e  = stimuli matrix with dimension N_e * T
-    % B  = stimuli coefficients matrix with dimension N_x * N_e
+    % Bo = stimuli coefficients matrix with dimension N_x * N_e
     % m0 = initial of mean vector
     % V0 = initial covariance matrix
     
@@ -34,6 +34,7 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
 
     Nx = length(Ao{1});
     NNx = p*Nx;
+    Ny = length(R);
     L = size(y);
     T = L(1,2);
     
@@ -51,7 +52,7 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
     end
     
     
-    L = size(B);
+    L = size(Bo);
     Ne = L(1,2);
     
     A = [];
@@ -72,6 +73,8 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
         Q = blkdiag(Q, smallvalue*eye(Nx));
     end
        
+    B = zeros(NNx , Ne);
+    B(1:Nx , :) = Bo;
     % ---------------------------------------------------------------------
     % Coventional Filtering 
    
@@ -88,13 +91,13 @@ function [m, Cov, P] = Filtering(y, Ao, Qo, C, R, e, B, m0, V0)
         
         mTemp(Nx+1:end , :) = mLast(1: NNx - Nx , :);
         
-        mTemp(1:Nx , :) = A(1:Nx , :)*mLast + B * e(:,i);
+        mTemp(1:Nx , :) = A(1:Nx , :)*mLast + Bo * e(:,i);
         STemp = A*SLast*A' + Q;
         
-        K = STemp(:,1:Nx)*C'/( C*STemp(1:Nx,1:Nx)*C'+ R);
+        K = STemp(:,1:Nx)*Co'/( Co*STemp(1:Nx,1:Nx)*Co'+ R);
         
-        mF(:,i) = mTemp + K*(y(:,i) - C*mTemp(1:Nx , :));
-        SF(:,:,i) = STemp - K * (C*STemp(1:Nx,1:Nx)*C'+ R) *K';
+        mF(:,i) = mTemp + K*(y(:,i) - Co*mTemp(1:Nx , :));
+        SF(:,:,i) = STemp - K * (Co*STemp(1:Nx,1:Nx)*Co'+ R) *K';
 
         mLast = mF(:,i);
         SLast = SF(:,:,i);     

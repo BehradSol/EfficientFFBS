@@ -1,8 +1,8 @@
 %% This file is distributed under BSD (simplified) license
 %% Author: Behrad Soleimani <behrad@umd.edu>
 
-function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
-    % The function implements the efficient Forward Filtering and Backward
+function [m, Cov, P] = EFBS(y, Ao, Qo, Co, R, e, Bo, m0)
+    % This function implements the efficient Forward Filtering and Backward
     % Smooting.
     
     % Inputs:
@@ -10,11 +10,11 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     % Ao = VAR coefficients; A is a p * 1 cell corresponding to each lag 
     %     such that each cell is an N_x * N_x matrix
     % Qo = source noise covariance matrix with dimension N_x * N_x
-    % C  = linear mapping matrix between observations and sources with
+    % Co = linear mapping matrix between observations and sources with
     %     dimension N_y * N_x
     % R  = observation noise matrix with dimension N_y * N_y
     % e  = stimuli matrix with dimension N_e * T
-    % B  = stimuli coefficients matrix with dimension N_x * N_e
+    % Bo = stimuli coefficients matrix with dimension N_x * N_e
     % m0 = initial condition of mean vector
 
     % Outputs:
@@ -30,6 +30,7 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     p = length(Ao);
     Nx = length(Ao{1});
     NNx = p*Nx;
+    Ny = length(R);
     L = size(y);
     T = L(1,2);
         
@@ -44,7 +45,7 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
         m0 = zeros(NNx,1);
     end
         
-    L = size(B);
+    L = size(Bo);
     Ne = L(1,2);
     
     A = [];
@@ -66,10 +67,15 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
         Q = blkdiag(Q, smallvalue*eye(Nx));
     end
     
-
+    C = zeros(Ny , NNx);
+    C(: , 1:Nx) = Co;
+    
+    B = zeros(NNx , Ne);
+    B(1:Nx , :) = Bo;
+    
     % ---------------------------------------------------------------------
     % Efficient Forward Filtering and Backward Smoothing (EFBS)
-   
+
     Sig = idare(A',A'*C',Q,C*Q*C' + R,Q*C',[]);   %Sigma_{k|k}
 
     if (isempty(Sig))
@@ -78,7 +84,7 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     
     SigP = A*Sig*A' + Q;    %Sigma_{k+1|k}
 
-    K = SigP(:,1:Nx)*C'/( C*SigP(1:Nx,1:Nx)*C'+ R);   %Kalman gain
+    K = SigP(:,1:Nx)*Co'/( Co*SigP(1:Nx,1:Nx)*Co'+ R);   %Kalman gain
     S = Sig*A'/SigP;    %Smoothing gain
     
  
@@ -91,9 +97,9 @@ function [m, Cov, P] = EFBS(y, Ao, Qo, C, R, e, B, m0)
     for i = 1 : 1 : T
         
         mTemp(Nx+1:end , :) = mLast(1: NNx - Nx , :);
-        mTemp(1:Nx , :) = A(1:Nx , :)*mLast + B * e(:,i);
+        mTemp(1:Nx , :) = A(1:Nx , :)*mLast + Bo * e(:,i);
           
-        mF(:,i) = mTemp + K*(y(:,i) - C*mTemp(1:Nx , :));
+        mF(:,i) = mTemp + K*(y(:,i) - Co*mTemp(1:Nx , :));
 
         mLast = mF(:,i);
              
