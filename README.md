@@ -33,7 +33,7 @@ We consider the following observation model
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014091-39efaa00-8e2a-11ea-8640-24d4fb30b3cd.jpg">
 </p>
-where **x<sub>t</sub>** and **y**<sub>1:T</sub> represent the observation and source vectors at *t*-th time sample, respectively. The underlying source dynamic is modeled via a vector auto-regressive process, VAR(*p*), as
+where *x<sub>t</sub>* and **y**<sub>1:T</sub> represent the observation and source vectors at *t*-th time sample, respectively. The underlying source dynamic is modeled via a vector auto-regressive process, VAR(*p*), as
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014376-bd110000-8e2a-11ea-91e4-e41cb0ac6543.jpg">
 </p>
