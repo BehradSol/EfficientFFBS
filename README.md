@@ -37,7 +37,7 @@ where x<sub>t</sub> and y<sub>t</sub> represent the observation and source vecto
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014376-bd110000-8e2a-11ea-91e4-e41cb0ac6543.jpg">
 </p>
-where e<sub>t</sub> shows the (external) stimuli vector corresponding to the *t*-th time sample. The goal is to obtain the non-causal beliefs, i.e. 
+where e<sub>t</sub> shows the (external) stimuli vector corresponding to the t-th time sample. The goal is to obtain the non-causal beliefs, i.e. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014834-969f9480-8e2b-11ea-975c-b01266ac2f14.jpg">
@@ -45,7 +45,7 @@ where e<sub>t</sub> shows the (external) stimuli vector corresponding to the *t*
 
 In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as a VAR(1). 
 
-In Fig.1, the estimated verions of the source #1, i.e. non-causal belifes p(**x**<sub>t</sub> | **y**<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
+In Fig.1, the estimated verion of the source #1, i.e. non-causal belifes p(**x**<sub>t</sub> | **y**<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
 
 
 | ![](Figs/Comparison.png) | 
