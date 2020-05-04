@@ -45,7 +45,7 @@ where e<sub>t</sub> shows the (external) stimuli vector corresponding to the t-t
 
 In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as a VAR(1). 
 
-In Fig.1, the estimated verion of the source #1, i.e. non-causal belifes p(**x**<sub>t</sub> | **y**<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
+In Fig.1, the estimated verion of the source #1, i.e. non-causal belifes p(x<sub>t</sub> | y<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
 
 
 | ![](Figs/Comparison.png) | 
