@@ -33,7 +33,7 @@ We consider the following observation model
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014091-39efaa00-8e2a-11ea-8640-24d4fb30b3cd.jpg">
 </p>
-where x<sub>t</sub> and y<sub>t</sub> represent the observation and source vectors at t-th time sample, respectively. The underlying source dynamic is modeled via a vector auto-regressive process, VAR(p), as
+where x<sub>t</sub> and y<sub>t</sub> represent the observation and source vectors at t-th time sample, respectively. The underlying source dynamic is modeled via a vector autoregressive process, VAR(p), as
 <p align="center">
   <img src="https://user-images.githubusercontent.com/59627073/81014376-bd110000-8e2a-11ea-91e4-e41cb0ac6543.jpg">
 </p>
@@ -43,16 +43,16 @@ where e<sub>t</sub> shows the (external) stimuli vector corresponding to the t-t
   <img src="https://user-images.githubusercontent.com/59627073/81014834-969f9480-8e2b-11ea-975c-b01266ac2f14.jpg">
 </p>
 
-In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as a VAR(1). 
+In this example, we assume that there are N<sub>y</sub>=3 observations, N<sub>x</sub>=5 sources, and T=50 time samples. The underlying source dynamic is considered as VAR(1). 
 
-In Fig.1, the estimated verion of the source #1, i.e. non-causal belifes p(x<sub>t</sub> | y<sub>1:T</sub>), and ground truth are compared. As it can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
+In Fig.1, the estimated version of the source #1, i.e. non-causal beliefs p(x<sub>t</sub> | y<sub>1:T</sub>), and ground truth are compared. As can be seen, the performance of the conventional filtering scheme (Kalman filtering) is almost the same as the EfficientFFBS. 
 
 
 | ![](Figs/Comparison.png) | 
 |:--:| 
 | Fig 1. Comparison of the conventional filtering and EfficientFFBS |
 
-In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted to demonstrate the it can be an acceptable estimation of the true value with high confidence interval.
+In Fig.2, the 95% quantile of the estimation (via EfficientFFBS) is depicted to demonstrate the accuracy of the estimation.
 
 | ![](Figs/Quantile.png) | 
 |:--:| 
