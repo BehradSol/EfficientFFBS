@@ -9,7 +9,7 @@ Contact: behrad@umd.edu
 
 Citation: If you find these piece of codes helpful in your reserach, please cite the following paper
 
--Soleimani, B., P. Das, P., J. Kulasingham, J. Z. Simon and B. Babadi (2020) Granger Causal Inference from Indirect Low-Dimensional Measurements with Application to MEG Functional Connectivity Analysis, 2020 54th Annual Conference on Information Sciences and Systems.
+- B. Soleimani, P. Das, J. Kulasingham, J. Z. Simon and B. Babadi, "Granger Causal Inference from Indirect Low-Dimensional Measurements with Application to MEG Functional Connectivity Analysis," 2020 54th Annual Conference on Information Sciences and Systems (CISS), Princeton, NJ, USA, 2020, pp. 1-5, [doi: 10.1109/CISS48834.2020.1570617418](https://ieeexplore.ieee.org/abstract/document/9086218).
 
 Date: March 5, 2020
 
